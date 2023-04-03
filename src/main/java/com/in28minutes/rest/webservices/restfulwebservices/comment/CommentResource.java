@@ -128,7 +128,7 @@ public class CommentResource     {
 	
 	
 	@PostMapping("/users/{username}/comments")
-	public ResponseEntity<Comment> createComment(
+	public ResponseEntity<Object> createComment(
 			@PathVariable String username, @RequestBody Comment comment){
 		
 //		comment.setUsername(username);
@@ -140,6 +140,10 @@ public class CommentResource     {
 		
 //		String a =  comment.getDescription().replaceAll("/'/g", "''");
 //		System.out.println("replace: " + a);
+		
+//		return commentRepository.insertComment(comment.getDescription(), comment.getUrgencyLevel(), comment.getInResponseTo(),
+//				comment.getTargetDate(), comment.getUsername(), comment.getVotes(), comment.getLessonId());
+		
 		
 		Comment createdComment= commentRepository.save(comment);
 		

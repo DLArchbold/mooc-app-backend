@@ -1,4 +1,6 @@
 /*https://www.browserling.com/tools/bcrypt Use Rounds 10*/
+
+
 delete from todo;
 
 delete from application_user;
@@ -27,19 +29,19 @@ values(10003, 'in28minutes', 'Learn Microservices', sysdate(), false);
 
 
 insert into comment(id, description, urgency_level, in_response_to, target_date, username, votes, lesson_id)
-values(1, 'description 1', '3', 0, LOCALTIMESTAMP - INTERVAL '30' MINUTE, 'student1@gmail.com', 1, 1);
+values(1, 'description 1', '3', 0, LOCALTIMESTAMP, 'student1@gmail.com', 1, 1);
 
 insert into comment(id, description,urgency_level,in_response_to, target_date,username, votes,lesson_id)
-values(2, 'description 2', '2', 1, LOCALTIMESTAMP - INTERVAL '30' MINUTE, 'student1@gmail.com', 1,1);
+values(2, 'description 2', '2', 1, LOCALTIMESTAMP, 'student1@gmail.com', 1,1);
 
 insert into comment(id, description,urgency_level,in_response_to, target_date,username, votes,lesson_id)
-values(3, 'description 3', '1', 2, LOCALTIMESTAMP - INTERVAL '30' MINUTE, 'instructor1@gmail.com', 1, 1);
+values(3, 'description 3', '1', 2, LOCALTIMESTAMP, 'instructor1@gmail.com', 1, 1);
 
 insert into comment(id, description,urgency_level,in_response_to, target_date,username, votes, lesson_id)
-values(4, 'description 4', '3', 0, LOCALTIMESTAMP - INTERVAL '30' MINUTE, 'student1@gmail.com', 1,2);
+values(4, 'description 4', '3', 0, LOCALTIMESTAMP, 'student1@gmail.com', 1,2);
 
 insert into comment(id, description,urgency_level,in_response_to, target_date,username, votes,lesson_id)
-values(5, 'description 5', '2', 4, LOCALTIMESTAMP - INTERVAL '30' MINUTE, 'student1@gmail.com', 1,2);
+values(5, 'description 5', '2', 4, LOCALTIMESTAMP, 'student1@gmail.com', 1,2);
 
 insert into comment(id, description,urgency_level,in_response_to, target_date,username, votes,lesson_id)
 values(6, 'description 6', '1', 5, LOCALTIMESTAMP - INTERVAL '30' MINUTE, 'instructor1@gmail.com', 1, 2);
