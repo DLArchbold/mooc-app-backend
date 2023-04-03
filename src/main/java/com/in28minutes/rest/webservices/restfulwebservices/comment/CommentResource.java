@@ -1,6 +1,7 @@
 package com.in28minutes.rest.webservices.restfulwebservices.comment;
 
 import java.net.URI;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,8 +17,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
-import com.in28minutes.rest.webservices.restfulwebservices.comment.service.CommentRepository;
-
 
 
 
@@ -28,16 +27,74 @@ public class CommentResource     {
 	@Autowired 
 	private CommentRepository commentRepository;
 	
-	@GetMapping("/users/{username}/comments")
-	public List<Comment> getAllComments(@PathVariable String username){
+	@GetMapping("/users/comments")
+	public List<Comment> getAllComments(){
 //		return commentRepository.findByUsername(username);
 		return commentRepository.findAll();
 	}
 	
 	@GetMapping("/users/{username}/comments/{id}")
-	public Comment getComment(@PathVariable String username, @PathVariable long id){
+	public Comment getCommentUsingId(@PathVariable String username, @PathVariable long id){
 		return  commentRepository.findById(id).get();
 	}
+	
+//	@GetMapping("/users/{email}/{inResponseTo}/comments")
+//	public List<Comment> getTopLevelCommentsForLessonByEmail(
+//			@PathVariable String email,
+//			@PathVariable long inResponseTo){
+//		
+//		return  commentRepository.findByEmail(email, inResponseTo);
+//	}
+	
+	
+	@GetMapping("/users/comments/{lessonId}/all")
+	public List<Comment> getCommentsByLessonId(
+			@PathVariable long lessonId){
+		
+		return  commentRepository.findCommentsByLessonId(lessonId);
+	}
+	
+	@GetMapping("/users/comments/{lessonId}/all/toplevel")
+	public List<Comment> getTopLevelCommentByLessonId(
+			@PathVariable long lessonId){
+		
+		return  commentRepository.findTopLevelCommentByLessonId(lessonId, 0);
+	}
+	
+	@GetMapping("/users/comments/{lessonId}/{email}/all/toplevel")
+	public List<Comment> getTopLevelCommentByLessonIdByEmail(
+			@PathVariable long lessonId,
+			@PathVariable String email){
+		
+		return  commentRepository.findTopLevelCommentByLessonIdByEmail(lessonId, email, 0);
+	}
+	
+	@GetMapping("/users/comments/{lessonId}/{email}/all/toplevel/ToRespond")
+	public List<Long> getTopLevelCommentIdsByLessonIdByEmailToRespond(
+			@PathVariable long lessonId,
+			@PathVariable String email){
+		
+		List<Long> ids = new ArrayList<>();
+		List<Comment> comments =commentRepository.findTopLevelCommentByLessonIdByEmailExcludeUser(lessonId, email, 0);
+		for(int i = 0; i<comments.size(); i++) {
+			long id = comments.get(i).getId();
+			ids.add(id);
+		}
+		
+		
+		return  ids;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 	//DELETE /users/{username}/todos/{id}

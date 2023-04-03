@@ -8,11 +8,13 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Lob;
+import javax.persistence.Table;
 
 import org.hibernate.annotations.GenericGenerator;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 
 @Entity
+@Table(name="Comment")
 @EntityScan
 public class Comment {
 
@@ -32,6 +34,7 @@ public class Comment {
 	private Date targetDate;
 	private String username;
 	private long votes;
+	private long lessonId;
 
 	protected Comment() {
 
@@ -39,7 +42,8 @@ public class Comment {
 
 	public Comment(long id, String description, String urgencyLevel, 
 			long inResponseTo, Date targetDate,
-			String username, long votes) {
+			String username, long votes,
+			long lessonId) {
 		super();
 		this.id = id;
 		this.description = description;
@@ -48,6 +52,21 @@ public class Comment {
 		this.targetDate = targetDate;
 		this.username = username;
 		this.votes = votes;
+		this.lessonId = lessonId;
+	}
+
+	/**
+	 * @return the lessonId
+	 */
+	public long getLessonId() {
+		return lessonId;
+	}
+
+	/**
+	 * @param lessonId the lessonId to set
+	 */
+	public void setLessonId(long lessonId) {
+		this.lessonId = lessonId;
 	}
 
 	/**
@@ -116,7 +135,7 @@ public class Comment {
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(id);
+		return Objects.hash(description, id, inResponseTo, lessonId, targetDate, urgencyLevel, username, votes);
 	}
 
 	@Override
@@ -128,7 +147,10 @@ public class Comment {
 		if (getClass() != obj.getClass())
 			return false;
 		Comment other = (Comment) obj;
-		return id == other.id;
+		return Objects.equals(description, other.description) && id == other.id && inResponseTo == other.inResponseTo
+				&& lessonId == other.lessonId && Objects.equals(targetDate, other.targetDate)
+				&& Objects.equals(urgencyLevel, other.urgencyLevel) && Objects.equals(username, other.username)
+				&& votes == other.votes;
 	}
 
 }

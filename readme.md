@@ -1,7 +1,4 @@
-# Full Stack Application with Spring Boot and React
-
-
-<img src="../react_00_architecture.png" width="300">
+# I will update these instructions later
 
 To understand the application
 - https://www.springboottutorial.com/spring-boot-react-full-stack-crud-maven-application
