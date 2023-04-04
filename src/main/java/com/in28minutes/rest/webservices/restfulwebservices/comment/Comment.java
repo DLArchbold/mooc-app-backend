@@ -35,15 +35,25 @@ public class Comment {
 	private String username;
 	private long votes;
 	private long lessonId;
+	private String commentType;
+	private Boolean answered;
 
-	protected Comment() {
 
-	}
 
-	public Comment(long id, String description, String urgencyLevel, 
-			long inResponseTo, Date targetDate,
-			String username, long votes,
-			long lessonId) {
+	/**
+	 * @param id
+	 * @param description
+	 * @param urgencyLevel
+	 * @param inResponseTo
+	 * @param targetDate
+	 * @param username
+	 * @param votes
+	 * @param lessonId
+	 * @param commentType
+	 * @param answered
+	 */
+	public Comment(long id, String description, String urgencyLevel, long inResponseTo, Date targetDate,
+			String username, long votes, long lessonId, String commentType, Boolean answered) {
 		super();
 		this.id = id;
 		this.description = description;
@@ -53,7 +63,30 @@ public class Comment {
 		this.username = username;
 		this.votes = votes;
 		this.lessonId = lessonId;
+		this.commentType = commentType;
+		this.answered = answered;
 	}
+
+	
+	
+	protected Comment() {
+
+	}
+
+	/**
+	 * @return the answered
+	 */
+	public Boolean getAnswered() {
+		return answered;
+	}
+
+	/**
+	 * @param answered the answered to set
+	 */
+	public void setAnswered(Boolean answered) {
+		this.answered = answered;
+	}
+
 
 	/**
 	 * @return the lessonId
@@ -76,7 +109,19 @@ public class Comment {
 		return votes;
 	}
 
-		
+	/**
+	 * @return the type
+	 */
+	public String getCommentType() {
+		return commentType;
+	}
+
+	/**
+	 * @param type the type to set
+	 */
+	public void setCommentType(String commentType) {
+		this.commentType = commentType;
+	}
 
 	/**
 	 * @param votes the votes to set
@@ -135,7 +180,8 @@ public class Comment {
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(description, id, inResponseTo, lessonId, targetDate, urgencyLevel, username, votes);
+		return Objects.hash(answered, commentType, description, id, inResponseTo, lessonId, targetDate, urgencyLevel,
+				username, votes);
 	}
 
 	@Override
@@ -147,10 +193,11 @@ public class Comment {
 		if (getClass() != obj.getClass())
 			return false;
 		Comment other = (Comment) obj;
-		return Objects.equals(description, other.description) && id == other.id && inResponseTo == other.inResponseTo
-				&& lessonId == other.lessonId && Objects.equals(targetDate, other.targetDate)
-				&& Objects.equals(urgencyLevel, other.urgencyLevel) && Objects.equals(username, other.username)
-				&& votes == other.votes;
+		return Objects.equals(answered, other.answered) && Objects.equals(commentType, other.commentType)
+				&& Objects.equals(description, other.description) && id == other.id
+				&& inResponseTo == other.inResponseTo && lessonId == other.lessonId
+				&& Objects.equals(targetDate, other.targetDate) && Objects.equals(urgencyLevel, other.urgencyLevel)
+				&& Objects.equals(username, other.username) && votes == other.votes;
 	}
 
 }

@@ -1,11 +1,11 @@
 /*https://www.browserling.com/tools/bcrypt Use Rounds 10*/
 
-
+--drop table comment;
 delete from todo;
 
 delete from application_user;
 delete from comment;
---drop table comment;
+
 delete from feedback;
 --/*in28minutes/dummy*/
 --INSERT INTO USER (ID, USERNAME, PASSWORD, ROLE) 
@@ -28,23 +28,23 @@ insert into todo(id, username,description,target_date,is_done)
 values(10003, 'in28minutes', 'Learn Microservices', sysdate(), false);
 
 
-insert into comment(id, description, urgency_level, in_response_to, target_date, username, votes, lesson_id)
-values(1, 'description 1', '3', 0, LOCALTIMESTAMP, 'student1@gmail.com', 1, 1);
+insert into comment(id, description, urgency_level, in_response_to, target_date, username, votes, lesson_id, comment_type, answered)
+values(1, 'description 1', '3', 0, LOCALTIMESTAMP, 'student1@gmail.com', 1, 1, 'question', TRUE);
 
-insert into comment(id, description,urgency_level,in_response_to, target_date,username, votes,lesson_id)
-values(2, 'description 2', '2', 1, LOCALTIMESTAMP, 'student1@gmail.com', 1,1);
+insert into comment(id, description,urgency_level,in_response_to, target_date,username, votes,lesson_id, comment_type, answered)
+values(2, 'description 2', '2', 1, LOCALTIMESTAMP, 'student1@gmail.com', 1,1, 'statement', NULL);
 
-insert into comment(id, description,urgency_level,in_response_to, target_date,username, votes,lesson_id)
-values(3, 'description 3', '1', 2, LOCALTIMESTAMP, 'instructor1@gmail.com', 1, 1);
+insert into comment(id, description,urgency_level,in_response_to, target_date,username, votes,lesson_id, comment_type, answered)
+values(3, 'description 3', '1', 2, LOCALTIMESTAMP, 'instructor1@gmail.com', 1, 1, 'statement', NULL);
 
-insert into comment(id, description,urgency_level,in_response_to, target_date,username, votes, lesson_id)
-values(4, 'description 4', '3', 0, LOCALTIMESTAMP, 'student1@gmail.com', 1,2);
+insert into comment(id, description,urgency_level,in_response_to, target_date,username, votes, lesson_id, comment_type, answered)
+values(4, 'description 4', '3', 0, LOCALTIMESTAMP, 'student1@gmail.com', 1,2, 'question', FALSE);
 
-insert into comment(id, description,urgency_level,in_response_to, target_date,username, votes,lesson_id)
-values(5, 'description 5', '2', 4, LOCALTIMESTAMP, 'student1@gmail.com', 1,2);
+insert into comment(id, description,urgency_level,in_response_to, target_date,username, votes,lesson_id, comment_type, answered)
+values(5, 'description 5', '2', 4, LOCALTIMESTAMP, 'student1@gmail.com', 1,2, 'statement', NULL);
 
-insert into comment(id, description,urgency_level,in_response_to, target_date,username, votes,lesson_id)
-values(6, 'description 6', '1', 5, LOCALTIMESTAMP - INTERVAL '30' MINUTE, 'instructor1@gmail.com', 1, 2);
+insert into comment(id, description,urgency_level,in_response_to, target_date,username, votes,lesson_id, comment_type, answered)
+values(6, 'description 6', '1', 5, LOCALTIMESTAMP, 'instructor1@gmail.com', 1, 2, 'statement', NULL);
 
 
 
