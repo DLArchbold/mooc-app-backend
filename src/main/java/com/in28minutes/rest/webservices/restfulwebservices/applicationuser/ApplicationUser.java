@@ -29,22 +29,32 @@ public class ApplicationUser {
 	private String password;
 	private String userType;
 
+	private Long lessonId;
+	private String name;
+	private String Interests;
+
 	public ApplicationUser() {
 
 	}
 
 	/**
 	 * @param id
+	 * @param name
 	 * @param email
 	 * @param password
 	 * @param userType
+	 * @param lessonId
+	 * @param Interests
 	 */
-	public ApplicationUser(long id, String email, String password, String userType) {
+	public ApplicationUser(long id,String name, String email, String password, String userType, Long lessonId, String Interests) {
 		super();
 		this.id = id;
+		this.name = name;
 		this.email = email;
 		this.password = password;
 		this.userType = userType;
+		this.lessonId = lessonId;
+		this.Interests = Interests;
 	}
 
 	/**
@@ -59,6 +69,20 @@ public class ApplicationUser {
 	 */
 	public void setId(long id) {
 		this.id = id;
+	}
+
+	/**
+	 * @return the name
+	 */
+	public String getName() {
+		return name;
+	}
+
+	/**
+	 * @param name the id to set
+	 */
+	public void setName(String name) {
+		this.name = name;
 	}
 
 	/**
@@ -103,9 +127,38 @@ public class ApplicationUser {
 		this.userType = userType;
 	}
 
+
+	/**
+	 * @return the LessonId
+	 */
+	public Long getLessonId() {
+		return lessonId;
+	}
+
+	/**
+	 * @param lessonId the LessonId to set
+	 */
+	public void setLessonId(Long lessonId) {
+		this.lessonId = lessonId;
+	}
+
+	/**
+	 * @return the Interests
+	 */
+	public String getInterests() {
+		return Interests;
+	}
+
+	/**
+	 * @param Interests the userType to set
+	 */
+	public void setInterests(String Interests) {
+		this.Interests = Interests;
+	}
+
 	@Override
 	public int hashCode() {
-		return Objects.hash(email, id, password, userType);
+		return Objects.hash(email, name, id, password, userType, Interests);
 	}
 
 	@Override
@@ -117,8 +170,8 @@ public class ApplicationUser {
 		if (getClass() != obj.getClass())
 			return false;
 		ApplicationUser other = (ApplicationUser) obj;
-		return Objects.equals(email, other.email) && id == other.id && Objects.equals(password, other.password)
-				&& Objects.equals(userType, other.userType);
+		return Objects.equals(email, other.email) && id == other.id && Objects.equals(password, other.password)&& Objects.equals(name, other.name)
+				&& Objects.equals(userType, other.userType) && Objects.equals(lessonId, other.lessonId)&& Objects.equals(Interests, other.Interests);
 	}
 
 }

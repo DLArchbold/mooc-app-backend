@@ -251,6 +251,46 @@ public class ApplicationUserResource {
 
 	}
 
+	@GetMapping("/students")
+	public List<ApplicationUser> getAllStudents() {
+		List<ApplicationUser> temp = new ArrayList<ApplicationUser>();
+		temp = applicationUserRepository.findAll();
+		List<ApplicationUser> toReturn = new ArrayList<ApplicationUser>();
+		for (ApplicationUser f:temp) {
+			if (f.getUserType().equals("student")) {
+				toReturn.add(f);
+			}
+		}
+		return toReturn;
+
+	}
+
+	@GetMapping("students/lessonId/{lessonId}")
+	public List<ApplicationUser> getAllStudentsforLesson(@PathVariable Long lessonId) {
+		List<ApplicationUser> temp = new ArrayList<ApplicationUser>();
+		temp = applicationUserRepository.findAll();
+		List<ApplicationUser> toReturn = new ArrayList<ApplicationUser>();
+		for (ApplicationUser f:temp) {
+			if (f.getLessonId() == lessonId) {
+				toReturn.add(f);
+			}
+		}
+		return toReturn;
+	}
+
+	@GetMapping("students/interests/{Interests}")
+	public List<ApplicationUser> getAllStudentsforInterests(@PathVariable String Interests) {
+		List<ApplicationUser> temp = new ArrayList<ApplicationUser>();
+		temp = applicationUserRepository.findAll();
+		List<ApplicationUser> toReturn = new ArrayList<ApplicationUser>();
+		for (ApplicationUser f:temp) {
+			if (f.getInterests().toLowerCase().contains(Interests.toLowerCase())) {
+				toReturn.add(f);
+			}
+		}
+		return toReturn;
+	}
+
 	protected ApplicationUser findUser(ApplicationUser applicationUser) {
 		List<ApplicationUser> temp = new ArrayList<ApplicationUser>();
 		temp = applicationUserRepository.findAll();
