@@ -1,12 +1,15 @@
 /*https://www.browserling.com/tools/bcrypt Use Rounds 10*/
 
---drop table comment;
+--drop table enrolled;
 delete from todo;
 
 delete from application_user;
 delete from comment;
 
 delete from feedback;
+delete from lesson;
+delete from course;
+delete from enrolled;
 --/*in28minutes/dummy*/
 --INSERT INTO USER (ID, USERNAME, PASSWORD, ROLE) 
 --VALUES (1, 'in28minutes', '$2a$10$3zHzb.Npv1hfZbLEU5qsdOju/tk2je6W6PnNnY.c1ujWPcZh4PL6e','ROLE_USER');
@@ -67,11 +70,47 @@ values(5, 'feedback comment 5', 3, 2);
 
 
 
+
 insert into application_user(id, email,password, user_type)
 values(1, 'student1@gmail.com', 'student1', 'student');
 
 insert into application_user(id, email,password, user_type)
 values(2, 'instructor1@gmail.com', 'instructor1', 'instructor');
+
+
+insert into lesson(id, video_link, lesson_number, course_id, description)
+values(1, 'https://www.youtube.com/embed/L3LMbpZIKhQ?list=PLB7540DEDD482705B', 1, 1, 'First lesson of course 1');
+
+insert into lesson(id, video_link, lesson_number, course_id, description)
+values(2, 'https://www.youtube.com/embed/aircAruvnKk', 2, 1, 'Second lesson of course 1');
+
+
+
+
+
+
+--insert into course(id, test, description)
+--values(1, 2, 'First courses');
+--
+--insert into course(id, test, description)
+--values(2, 2, 'Second course');
+
+insert into course(id,  title, description, instructor_application_user_id)
+values(1,  'Course 1','Firstcourse', 1);
+
+insert into course(id,  title, description, instructor_application_user_id)
+values(2,  'Course 2', 'Second course', 2);
+
+
+
+
+
+
+insert into enrolled(id, username, course_id)
+values(1,'student1@gmail.com',1);
+
+insert into enrolled(id, username, course_id)
+values(2,'student1@gmail.com',2);
 
 --insert into user(id, email,password, user_type)
 --values(3, '', 3, 2);
