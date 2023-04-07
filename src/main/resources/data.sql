@@ -71,11 +71,29 @@ values(5, 'feedback comment 5', 3, 2);
 
 
 
-insert into application_user(id, email,password, user_type)
-values(1, 'student1@gmail.com', 'student1', 'student');
+insert into application_user(id,email,password, user_type, lesson_id, interests, name)
+values(1, 'student1@gmail.com', 'student1', 'student', 1, 'Machine Learning', 'ChenxiSun');
 
-insert into application_user(id, email,password, user_type)
-values(2, 'instructor1@gmail.com', 'instructor1', 'instructor');
+insert into application_user(id, email,password, user_type, lesson_id, interests, name)
+values(2,'instructor1@gmail.com', 'instructor1', 'instructor', 2,'Natual Language Processing', 'XintianCao');
+
+insert into application_user(id,email,password, user_type, lesson_id, interests, name)
+values(3, 'student3@gmail.com', 'student3', 'student', 1, 'Web development, Software', 'Jack');
+
+insert into application_user(id,email,password, user_type, lesson_id, interests, name)
+values(4, 'student4@gmail.com', 'student4', 'student', 2, 'Hardware', 'Jane');
+
+insert into application_user(id,email,password, user_type, lesson_id, interests, name)
+values(5, 's5@gatech.edu', 'student5', 'student', 2, 'Software', 'Michael');
+
+insert into application_user(id,email,password, user_type, lesson_id, interests, name)
+values(6, 's6@gatech.edu', 'student6', 'student', 1, 'Computer Vision', 'Leon');
+
+insert into application_user(id,email,password, user_type, lesson_id, interests, name)
+values(7, 's7@gatech.edu', 'student7', 'student', 2, 'Deep Learning', 'Penny');
+
+insert into application_user(id,email,password, user_type, lesson_id, interests, name)
+values(8, 's8@gatech.edu', 'student8', 'student', 1, 'System Control', 'Bess');
 
 
 insert into lesson(id, video_link, lesson_number, course_id, description)
