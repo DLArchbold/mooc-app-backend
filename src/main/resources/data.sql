@@ -2,7 +2,7 @@
 
 --drop table enrolled;
 delete from todo;
-
+delete from user_follow;
 delete from application_user;
 delete from comment;
 
@@ -95,6 +95,13 @@ values(7, 's7@gatech.edu', 'student7', 'student', 2, 'Deep Learning', 'Penny');
 insert into application_user(id,email,password, user_type, lesson_id, interests, name)
 values(8, 's8@gatech.edu', 'student8', 'student', 1, 'System Control', 'Bess');
 
+insert into application_user(id, email,password, user_type, lesson_id, interests, name)
+values(9,'instructor2@gmail.com', 'instructor2', 'instructor', 2,'Natual Language Processing', 'James');
+
+
+
+
+
 
 insert into lesson(id, video_link, lesson_number, course_id, description)
 values(1, 'https://www.youtube.com/embed/L3LMbpZIKhQ?list=PLB7540DEDD482705B', 1, 1, 'First lesson of course 1');
@@ -114,10 +121,17 @@ values(2, 'https://www.youtube.com/embed/aircAruvnKk', 2, 1, 'Second lesson of c
 --values(2, 2, 'Second course');
 
 insert into course(id,  title, description, instructor_application_user_id)
-values(1,  'Course 1','Firstcourse', 1);
+values(1,  'Course 1','Firstcourse', 2);
 
 insert into course(id,  title, description, instructor_application_user_id)
 values(2,  'Course 2', 'Second course', 2);
+
+
+insert into course(id,  title, description, instructor_application_user_id)
+values(3,  'Course 3','Third course', 9);
+
+insert into course(id,  title, description, instructor_application_user_id)
+values(4,  'Course 4', 'Fourth course', 9);
 
 
 

@@ -17,6 +17,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.in28minutes.rest.webservices.restfulwebservices.ApiError;
+import com.in28minutes.rest.webservices.restfulwebservices.course.Course;
+import com.in28minutes.rest.webservices.restfulwebservices.course.CourseRepository;
 
 @RestController
 @CrossOrigin
@@ -24,6 +26,9 @@ public class EnrolledResource {
 
 	@Autowired
 	private EnrolledRepository enrolledRepository;
+	
+	@Autowired
+	private CourseRepository courseRepository;
 
 	@GetMapping("/enrolled/get/all")
 	public ResponseEntity<Object> getAllEnrolled() {
@@ -143,6 +148,64 @@ public class EnrolledResource {
 
 //		return ResponseEntity.noContent().build();
 	}
+	
+	@GetMapping("/enrolled/get/byUsername/{username}/returnCourseDetails")
+	public ResponseEntity<Object> getEnrolledCourseDetails(
+			@PathVariable String username) {
+
+//		Comment comment = commentService.deleteById(id);
+//		if(comment!=null) {
+//			return ResponseEntity.noContent().build();
+//		}
+
+		Enrolled enrolledCheck = new Enrolled();
+		enrolledCheck.setUsername(username);
+
+		List<Enrolled> enrolled = enrolledRepository.findByUsername(username);
+		if (enrolled != null) {
+			List<Course> enrolledCouseDetails = new ArrayList<Course>();
+			for (Enrolled i: enrolled) {
+				enrolledCouseDetails.add(courseRepository.findCourseById(i.getCourseId()));
+			}
+			
+//			for(int j = 0; j<enrolledCouseDetails.size(); j++) {
+//				System.out.println("test: "+ enrolledCouseDetails.get(j).getTitle());	
+//			}
+			
+			
+			
+			return ResponseEntity.status(HttpStatus.OK).header("Access-Control-Allow-Origin").body(enrolledCouseDetails);
+			
+			
+			
+		} else {
+			// Enrolled not found
+			// Implementation refer to #7
+//			https://www.baeldung.com/global-error-handler-in-a-spring-rest-api
+			ApiError apiError = new ApiError(HttpStatus.NOT_FOUND, "Enrolled not found");
+
+			return ResponseEntity.status(apiError.getStatus()).header("Access-Control-Allow-Origin").body(apiError);
+
+		}
+
+//		return ResponseEntity.noContent().build();
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 //	
 //	@GetMapping("/enrolled/get/usingEnrolledId/{enrolledId}")

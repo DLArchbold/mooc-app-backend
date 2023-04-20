@@ -15,16 +15,14 @@ import com.in28minutes.rest.webservices.restfulwebservices.lesson.Lesson;
 //baeldung.com/spring-data-jpa-query
 public interface CourseRepository extends JpaRepository<Course, Long>{
 	
-//	String q1= "SELECT c FROM Lesson c"
-//			+ " WHERE c.username = :email "
-//			+ "AND c.inResponseTo = :inResponseTo";
-//	
-//	//Use names for properties of entities when defining query
-//	@Query(q1)
-//	List<Lesson> findByEmail(
-//			@Param("email") String email,
-//			@Param("inResponseTo") long inResponseTo);
-//	
+	String q1= "SELECT c FROM Course c"
+			+ " WHERE c.id = :id";
+	
+	//Use names for properties of entities when defining query
+	@Query(q1)
+	Course findCourseById(
+			@Param("id") long email);
+	
 //	
 //
 //	

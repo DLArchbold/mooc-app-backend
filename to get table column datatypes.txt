@@ -1,0 +1,1 @@
+SELECT DATA_TYPE from INFORMATION_SCHEMA.COLUMNS where table_schema = 'todos' and table_name = 'lesson';
