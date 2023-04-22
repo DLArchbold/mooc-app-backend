@@ -53,20 +53,20 @@ values(6, 'description 6', '1', 5, LOCALTIMESTAMP, 'instructor1@gmail.com', 1, 2
 
 
 
-insert into feedback(id, feedback_comment,feedback_rating, lesson_id)
-values(1, 'feedback comment 1', 1, 1);
+insert into feedback(id, feedback_comment,feedback_timestamp, feedback_rating, lesson_id, instructor_application_user_id)
+values(1, 'feedback comment 1', LOCALTIMESTAMP, 1, 1, 2);
 
-insert into feedback(id, feedback_comment,feedback_rating, lesson_id)
-values(3, 'feedback comment 2', 2, 1);
+insert into feedback(id, feedback_comment, feedback_timestamp, feedback_rating, lesson_id, instructor_application_user_id)
+values(3, 'feedback comment 2',LOCALTIMESTAMP,  2, 1, 2);
 
-insert into feedback(id, feedback_comment,feedback_rating, lesson_id)
-values(2, 'feedback comment 3', 3, 1);
+insert into feedback(id, feedback_comment,feedback_timestamp, feedback_rating, lesson_id, instructor_application_user_id)
+values(2, 'feedback comment 3', LOCALTIMESTAMP, 3, 1, 2);
 
-insert into feedback(id, feedback_comment,feedback_rating, lesson_id)
-values(4, 'feedback comment 4', 3, 2);
+insert into feedback(id, feedback_comment,feedback_timestamp, feedback_rating, lesson_id, instructor_application_user_id)
+values(4, 'feedback comment 4', LOCALTIMESTAMP, 3, 2, 2);
 
-insert into feedback(id, feedback_comment,feedback_rating, lesson_id)
-values(5, 'feedback comment 5', 3, 2);
+insert into feedback(id, feedback_comment, feedback_timestamp, feedback_rating, lesson_id, instructor_application_user_id)
+values(5, 'feedback comment 5', LOCALTIMESTAMP, 3, 2, 2);
 
 
 
@@ -138,11 +138,31 @@ values(4,  'Course 4', 'Fourth course', 9);
 
 
 
-insert into enrolled(id, username, course_id)
-values(1,'student1@gmail.com',1);
+insert into enrolled(id, username, course_id, enrolled_timestamp)
+values(1,'student1@gmail.com',1, LOCALTIMESTAMP);
 
-insert into enrolled(id, username, course_id)
-values(2,'student1@gmail.com',2);
+insert into enrolled(id, username, course_id, enrolled_timestamp)
+values(2,'student1@gmail.com',2, LOCALTIMESTAMP);
+
+insert into enrolled(id, username, course_id, enrolled_timestamp)
+values(3,'student3@gmail.com',1, '2023-04-19 12:45:56');
+--
+insert into enrolled(id, username, course_id, enrolled_timestamp)
+values(4,'student4@gmail.com',1, '2023-04-18 12:45:56');
+
+insert into enrolled(id, username, course_id, enrolled_timestamp)
+values(5,'s5@gmail.com',1, '2023-03-19 12:45:56');
+
+insert into enrolled(id, username, course_id, enrolled_timestamp)
+values(6,'s6@gmail.com',1, '2023-03-18 12:45:56');
+
+insert into enrolled(id, username, course_id, enrolled_timestamp)
+values(7,'s7@gmail.com',1, '2023-02-19 12:45:56');
+
+insert into enrolled(id, username, course_id, enrolled_timestamp)
+values(8,'s8@gmail.com',1, '2023-02-18 12:45:56');
+
+
 
 --insert into user(id, email,password, user_type)
 --values(3, '', 3, 2);

@@ -233,6 +233,10 @@ public class LessonResource {
 //		String a =  comment.getDescription().replaceAll("/'/g", "''");
 //		System.out.println("replace: " + a);
 		
+		
+		
+		
+		
 		if (lessonRepository.findById(lesson.getId()).isPresent() ) {
 			System.out.println("Lesson already exists: "+lessonRepository.findById(lesson.getId()));
 //			toReturn.add(f);

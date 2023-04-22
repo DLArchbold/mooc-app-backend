@@ -26,22 +26,58 @@ public class Feedback {
 	@Lob
 	@Column(length = 100000)
 	private String feedbackComment;
-
+	
+	private Date feedbackTimestamp;
+	
 	private long feedbackRating;
 
 	private long lessonId;
+
+	private long instructorApplicationUserId;
+	
+	/**
+	 * @return the instructorApplicationUserId
+	 */
+	public long getInstructorApplicationUserId() {
+		return instructorApplicationUserId;
+	}
+
+	/**
+	 * @param instructorApplicationUserId the instructorApplicationUserId to set
+	 */
+	public void setInstructorApplicationUserId(long instructorApplicationUserId) {
+		this.instructorApplicationUserId = instructorApplicationUserId;
+	}
 
 	public Feedback() {
 
 	}
 
 	public Feedback(long id, String feedbackComment, 
-			long feedbackRating, long lessonId) {
+			Date feedbackTimestamp,
+			long feedbackRating, long lessonId,
+			long instructorApplicationUserId) {
 		super();
 		this.id = id;
 		this.feedbackComment = feedbackComment;
+		this.feedbackTimestamp = feedbackTimestamp;
 		this.feedbackRating = feedbackRating;
 		this.lessonId = lessonId;
+		this.instructorApplicationUserId = instructorApplicationUserId;
+	}
+
+	/**
+	 * @return the feedbackTimestamp
+	 */
+	public Date getFeedbackTimestamp() {
+		return feedbackTimestamp;
+	}
+
+	/**
+	 * @param feedbackTimestamp the feedbackTimestamp to set
+	 */
+	public void setFeedbackTimestamp(Date feedbackTimestamp) {
+		this.feedbackTimestamp = feedbackTimestamp;
 	}
 
 	/**
@@ -102,7 +138,8 @@ public class Feedback {
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(feedbackComment, feedbackRating, id, lessonId);
+		return Objects.hash(feedbackComment, feedbackRating, feedbackTimestamp, id, instructorApplicationUserId,
+				lessonId);
 	}
 
 	@Override
@@ -115,7 +152,8 @@ public class Feedback {
 			return false;
 		Feedback other = (Feedback) obj;
 		return Objects.equals(feedbackComment, other.feedbackComment) && feedbackRating == other.feedbackRating
-				&& id == other.id && lessonId == other.lessonId;
+				&& Objects.equals(feedbackTimestamp, other.feedbackTimestamp) && id == other.id
+				&& instructorApplicationUserId == other.instructorApplicationUserId && lessonId == other.lessonId;
 	}
 
 }

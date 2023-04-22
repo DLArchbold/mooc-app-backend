@@ -33,6 +33,15 @@ public interface EnrolledRepository extends JpaRepository<Enrolled, Long>{
 	List<Enrolled> findByUsername(
 			@Param("username") String username);	
 	
+	String q3= "SELECT e FROM Enrolled e"
+			+ " WHERE e.courseId = :courseId"
+			+ " ORDER BY e.enrolledTimestamp";
+	
+	//Use names for properties of entities when defining query
+	@Query(q3)
+	List<Enrolled> findByCourseId(
+			@Param("courseId") long courseId);	
+	
 	
 //
 //	

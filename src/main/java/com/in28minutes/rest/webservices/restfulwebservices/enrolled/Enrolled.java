@@ -30,17 +30,33 @@ public class Enrolled {
 	
 	private String username;
 	private long courseId;
+	private Date enrolledTimestamp;
 	
+	/**
+	 * @return the enrolledTimestamp
+	 */
+	public Date getEnrolledTimestamp() {
+		return enrolledTimestamp;
+	}
+
+	/**
+	 * @param enrolledTimestamp the enrolledTimestamp to set
+	 */
+	public void setEnrolledTimestamp(Date enrolledTimestamp) {
+		this.enrolledTimestamp = enrolledTimestamp;
+	}
+
 	/**	
 	 * @param id
 	 * @param username
 	 * @param courseId
 	 */
-	public Enrolled(long id, String username, long courseId) {
+	public Enrolled(long id, String username, long courseId, Date enrolledTimestamp) {
 		super();
 		this.id = id;
 		this.username = username;
 		this.courseId = courseId;
+		this.enrolledTimestamp = enrolledTimestamp;
 	}
 
 	public Enrolled() {
@@ -49,7 +65,7 @@ public class Enrolled {
 	
 	@Override
 	public int hashCode() {
-		return Objects.hash(courseId, id, username);
+		return Objects.hash(courseId, enrolledTimestamp, id, username);
 	}
 	@Override
 	public boolean equals(Object obj) {
@@ -60,7 +76,8 @@ public class Enrolled {
 		if (getClass() != obj.getClass())
 			return false;
 		Enrolled other = (Enrolled) obj;
-		return courseId == other.courseId && id == other.id && Objects.equals(username, other.username);
+		return courseId == other.courseId && Objects.equals(enrolledTimestamp, other.enrolledTimestamp)
+				&& id == other.id && Objects.equals(username, other.username);
 	}
 	/**
 	 * @return the id

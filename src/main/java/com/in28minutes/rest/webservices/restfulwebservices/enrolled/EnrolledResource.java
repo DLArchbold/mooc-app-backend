@@ -26,7 +26,7 @@ public class EnrolledResource {
 
 	@Autowired
 	private EnrolledRepository enrolledRepository;
-	
+
 	@Autowired
 	private CourseRepository courseRepository;
 
@@ -75,6 +75,29 @@ public class EnrolledResource {
 
 			return ResponseEntity.status(apiError.getStatus()).header("Access-Control-Allow-Origin").body(apiError);
 		}
+	}
+
+	@GetMapping("/enrolled/get/getByCourseId/{courseId}")
+	public ResponseEntity<Object> getEnrolledUsingCourseId(@PathVariable long courseId) {
+//			return  enrolledRepository.findById(id).get();
+
+//			List<Long> tempList = new ArrayList<Long>();
+//			tempList.add(enrolledId);
+
+		List<Enrolled> enrolled = enrolledRepository.findByCourseId(courseId);
+		if (enrolled != null) {
+
+			// Return enrolled
+			return ResponseEntity.status(HttpStatus.OK).header("Access-Control-Allow-Origin").body(enrolled);
+
+		} else {
+			// User not found
+			// Implementation refer to #7
+//				https://www.baeldung.com/global-error-handler-in-a-spring-rest-api
+			ApiError apiError = new ApiError(HttpStatus.NOT_FOUND, "Enrolled not found");
+
+			return ResponseEntity.status(apiError.getStatus()).header("Access-Control-Allow-Origin").body(apiError);
+		}
 
 //		return ResponseEntity.noContent().build();
 
@@ -86,8 +109,7 @@ public class EnrolledResource {
 	}
 
 	@GetMapping("/enrolled/get/byCourseIdByUsername/{courseId}/{username}")
-	public ResponseEntity<Object> getEnrolledByCourseIdByUsername(
-			@PathVariable long courseId,
+	public ResponseEntity<Object> getEnrolledByCourseIdByUsername(@PathVariable long courseId,
 			@PathVariable String username) {
 
 //		Comment comment = commentService.deleteById(id);
@@ -117,11 +139,8 @@ public class EnrolledResource {
 //		return ResponseEntity.noContent().build();
 	}
 
-	
-	
 	@GetMapping("/enrolled/get/byUsername/{username}")
-	public ResponseEntity<Object> getEnrolledByUsername(
-			@PathVariable String username) {
+	public ResponseEntity<Object> getEnrolledByUsername(@PathVariable String username) {
 
 //		Comment comment = commentService.deleteById(id);
 //		if(comment!=null) {
@@ -148,10 +167,9 @@ public class EnrolledResource {
 
 //		return ResponseEntity.noContent().build();
 	}
-	
+
 	@GetMapping("/enrolled/get/byUsername/{username}/returnCourseDetails")
-	public ResponseEntity<Object> getEnrolledCourseDetails(
-			@PathVariable String username) {
+	public ResponseEntity<Object> getEnrolledCourseDetails(@PathVariable String username) {
 
 //		Comment comment = commentService.deleteById(id);
 //		if(comment!=null) {
@@ -164,20 +182,17 @@ public class EnrolledResource {
 		List<Enrolled> enrolled = enrolledRepository.findByUsername(username);
 		if (enrolled != null) {
 			List<Course> enrolledCouseDetails = new ArrayList<Course>();
-			for (Enrolled i: enrolled) {
+			for (Enrolled i : enrolled) {
 				enrolledCouseDetails.add(courseRepository.findCourseById(i.getCourseId()));
 			}
-			
+
 //			for(int j = 0; j<enrolledCouseDetails.size(); j++) {
 //				System.out.println("test: "+ enrolledCouseDetails.get(j).getTitle());	
 //			}
-			
-			
-			
-			return ResponseEntity.status(HttpStatus.OK).header("Access-Control-Allow-Origin").body(enrolledCouseDetails);
-			
-			
-			
+
+			return ResponseEntity.status(HttpStatus.OK).header("Access-Control-Allow-Origin")
+					.body(enrolledCouseDetails);
+
 		} else {
 			// Enrolled not found
 			// Implementation refer to #7
@@ -190,23 +205,7 @@ public class EnrolledResource {
 
 //		return ResponseEntity.noContent().build();
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
 //	
 //	@GetMapping("/enrolled/get/usingEnrolledId/{enrolledId}")
 //	public ResponseEntity<Object> getEnrolledsUsingEnrolledId(@PathVariable long enrolledId) {

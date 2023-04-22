@@ -1,6 +1,6 @@
 package com.in28minutes.rest.webservices.restfulwebservices.lesson;
 
-import java.sql.Date;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -9,6 +9,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.bind.annotation.PathVariable;
 
 
 @Repository
@@ -41,8 +42,19 @@ public interface LessonRepository extends JpaRepository<Lesson, Long>{
 	
 	//Use names for properties of entities when defining query
 	@Query(q2)
-	List<Lesson> findLessonsById(
+	Lesson findLessonById(
 			@Param("lessonId") long lessonId);
+	
+//	String q3= "SELECT l FROM Lesson l"
+//			+ " WHERE l.id = :lessonId AND"
+//			+ " WHERE ";
+//	
+//	//Use names for properties of entities when defining query
+//	@Query(q3)
+//	List<Lesson> findLessonsByCourseIdByDate(
+//			@Param("lessonId") long lessonId,
+//			@PathVariable Date startDate,
+//			@PathVariable Date endDate);
 	
 //	
 //	
