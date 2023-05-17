@@ -3,14 +3,15 @@ package com.in28minutes.rest.webservices.restfulwebservices.feedback;
 import java.util.Date;
 import java.util.Objects;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Lob;
+//import javax.persistence.Column;
+//import javax.persistence.Entity;
+//import javax.persistence.GeneratedValue;
+//import javax.persistence.Id;
+//import javax.persistence.Lob;
 
 import org.hibernate.annotations.GenericGenerator;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
+import jakarta.persistence.*;
 
 @Entity
 @EntityScan

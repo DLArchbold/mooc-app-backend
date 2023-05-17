@@ -2,11 +2,14 @@ package com.in28minutes.rest.webservices.restfulwebservices.applicationuser;
 
 import java.util.Objects;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Lob;
+//import javax.persistence.Column;
+//import javax.persistence.Entity;
+//import javax.persistence.GeneratedValue;
+//import javax.persistence.Id;
+//import javax.persistence.Lob;
+
+import jakarta.persistence.*;
+
 
 import org.hibernate.annotations.GenericGenerator;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
