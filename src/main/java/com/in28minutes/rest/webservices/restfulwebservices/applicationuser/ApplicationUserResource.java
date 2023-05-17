@@ -1,12 +1,16 @@
 package com.in28minutes.rest.webservices.restfulwebservices.applicationuser;
 
-import java.net.URI;
 import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.env.Environment;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PostAuthorize;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.oauth2.jwt.Jwt;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,9 +19,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.in28minutes.rest.webservices.restfulwebservices.ApiError;
+import com.in28minutes.rest.webservices.restfulwebservices.security.TestOAuthPostAuthorize;
 
 @RestController
 @CrossOrigin
@@ -26,6 +30,11 @@ public class ApplicationUserResource {
 	@Autowired
 	private ApplicationUserRepository applicationUserRepository;
 
+	
+	
+	@PreAuthorize("hasAuthority('ROLE_developer')")
+//	@PreAuthorize("hasRole('developer')")
+//	@Secured("ROLE_developer")
 	@GetMapping("/application_user/get/all")
 	public ResponseEntity<Object> getAllApplicationUser() {
 		// if there's a @PathVariable long lessonId in method parameter
@@ -52,6 +61,26 @@ public class ApplicationUserResource {
 
 	}
 
+	
+//	@PreAuthorize("hasAuthority('ROLE_developer') or #applicationUserId == #jwt.subject " )
+	@PreAuthorize("#applicationUserId == #jwt.subject" )
+	@GetMapping("/application_user/testOauthPreAuthorize/{applicationUserId}")
+	public String testOAuthUserIdPreAuthorize(@PathVariable String applicationUserId, @AuthenticationPrincipal Jwt jwt) {
+		return "Path variable id is: " + applicationUserId + " JWT subject: " + jwt.getSubject();
+	}
+	
+	
+//	@PreAuthorize("hasAuthority('ROLE_developer') or #applicationUserId == #jwt.subject " )
+	@PostAuthorize("returnObject.userId == #jwt.subject")
+	//.userId is from returned enttity's field
+	@GetMapping("/application_user/testOauthPostAuthorize/{applicationUserId}")
+	public TestOAuthPostAuthorize testOAuthUserIdPostAuthorize(@PathVariable String applicationUserId, @AuthenticationPrincipal Jwt jwt) {
+		return new TestOAuthPostAuthorize("Wei Jin", "Kok", "113c0eb4-33ed-447c-8d5c-79fe263c3d6f");
+	}
+	
+	
+	
+	
 	@GetMapping("/application_user/get/{applicationUserId}")
 	public ResponseEntity<Object> getApplicationUserUsingID(@PathVariable long applicationUserId) {
 //		return  applicationUserRepository.findById(id).get();
@@ -76,6 +105,11 @@ public class ApplicationUserResource {
 		}
 		
 	
+		
+		
+		
+		
+		
 
 //		return ResponseEntity.noContent().build();
 

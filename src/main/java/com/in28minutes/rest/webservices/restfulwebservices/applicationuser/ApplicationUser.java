@@ -1,6 +1,5 @@
 package com.in28minutes.rest.webservices.restfulwebservices.applicationuser;
 
-import java.util.Date;
 import java.util.Objects;
 
 import javax.persistence.Column;
