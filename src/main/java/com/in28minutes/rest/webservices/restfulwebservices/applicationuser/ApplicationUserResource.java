@@ -79,6 +79,14 @@ public class ApplicationUserResource {
 	}
 	
 	
+	@Autowired
+	Environment env;
+	@GetMapping("/application_user/return_port")
+	public String TestEnv() {
+		return env.getProperty("local.server.port");
+	}
+	
+	
 	
 	
 	@GetMapping("/application_user/get/{applicationUserId}")
