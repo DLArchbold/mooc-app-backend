@@ -24,7 +24,6 @@ import com.in28minutes.rest.webservices.restfulwebservices.ApiError;
 import com.in28minutes.rest.webservices.restfulwebservices.security.TestOAuthPostAuthorize;
 
 @RestController
-@CrossOrigin
 public class ApplicationUserResource {
 
 	@Autowired
