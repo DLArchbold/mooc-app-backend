@@ -5,7 +5,7 @@ import org.keycloak.models.KeycloakSession;
 import org.keycloak.storage.UserStorageProviderFactory;
 
 public class RemoteUserStorageProviderFactory implements UserStorageProviderFactory<RemoteUserStorageProvider>{
-public static final String PROVIDER_NAME = "my-remote-mysel-user-storage-provider";
+public static final String PROVIDER_NAME = "my-remote-mysql-user-storage-provider";
 	
 	@Override
 	public RemoteUserStorageProvider create(KeycloakSession session, ComponentModel model) {
@@ -25,5 +25,7 @@ public static final String PROVIDER_NAME = "my-remote-mysel-user-storage-provide
 		
 		return PROVIDER_NAME;
 	}
+	
+	
 
 }
