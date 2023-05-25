@@ -29,7 +29,7 @@ public class ApplicationUserResource {
 	@Autowired
 	private ApplicationUserRepository applicationUserRepository;
 
-	
+	//-----------------Testing Oauth below-----------------
 	
 	@PreAuthorize("hasAuthority('ROLE_developer')")
 //	@PreAuthorize("hasRole('developer')")
@@ -86,6 +86,8 @@ public class ApplicationUserResource {
 	}
 	
 	
+	
+	//-----------------Testing Oauth above-----------------
 	
 	
 	@GetMapping("/application_user/get/{applicationUserId}")
