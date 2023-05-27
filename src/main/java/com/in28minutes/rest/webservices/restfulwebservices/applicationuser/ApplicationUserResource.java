@@ -128,6 +128,7 @@ public class ApplicationUserResource {
 //		applicationUserRepository.find
 //		return applicationUserRepository.findAllById(tempList);
 	}
+	
 
 	
 	@GetMapping("/application_user/get/usingEmail/{email}")
@@ -154,15 +155,77 @@ public class ApplicationUserResource {
 		}
 		
 
-//		return ResponseEntity.noContent().build();
 
-//		return toReturn;
-
-//		applicationUserRepository.findby
-//		applicationUserRepository.find
-//		return applicationUserRepository.findAllById(tempList);
 	}
 	
+	
+	
+	
+	
+	
+	
+	
+	
+	//-----------------------------------------------------test SPI below
+	
+	
+	@GetMapping("/application_user/get/usingEmail/spi/{email}")
+	public ApplicationUser getApplicationUserUsingEmailSPI(@PathVariable String email) {
+//		return  applicationUserRepository.findById(id).get();
+
+//		List<Long> tempList = new ArrayList<Long>();
+//		tempList.add(applicationUserId);
+		ApplicationUser a = new ApplicationUser();
+		a.setEmail(email);
+		ApplicationUser applicationUser = findUser(a);
+		if(applicationUser!=null) {
+			
+			// Return user detail
+			return applicationUser;
+			
+		}else {
+			// User not found
+			// Implementation refer to #7
+//			https://www.baeldung.com/global-error-handler-in-a-spring-rest-api
+			ApiError apiError = new ApiError(HttpStatus.NOT_FOUND, "User not found");
+
+			return null;
+		}
+		
+
+
+	}
+	
+	
+
+	@PostMapping("/application_user/get/usingEmail/{email}/verifyPassword/spi")
+	public boolean getApplicationUserUsingEmailVerifyPasswordSPI(@PathVariable String email, @RequestBody ApplicationUser user) {
+
+		//Refer to LegacyUserService for ways to enhance and encrypt password and returned details and password
+		
+		ApplicationUser a = new ApplicationUser();
+		a.setEmail(email);
+		ApplicationUser applicationUser = findUser(a);
+		
+//		System.out.println("applicationUser.getPassword: " + applicationUser.getPassword() + " Password: " + user.getPassword());
+		if(applicationUser!=null && applicationUser.getPassword().equals(user.getPassword())) {
+			
+			// Return user detail
+			return true;
+			
+		}else {
+			// User not found
+			// Implementation refer to #7
+//			https://www.baeldung.com/global-error-handler-in-a-spring-rest-api
+			ApiError apiError = new ApiError(HttpStatus.NOT_FOUND, "User not found");
+
+			return false;
+		}
+		
+
+	}
+	
+//	-----------------------------------------------------------------test SPI above
 	
 	@GetMapping("/application_user/get/authenticate/{email}/{password}")
 	public ResponseEntity<Object> authenticateApplicationUser(@PathVariable String email,
