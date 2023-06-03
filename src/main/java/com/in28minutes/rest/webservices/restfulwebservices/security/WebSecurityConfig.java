@@ -124,6 +124,8 @@ public class WebSecurityConfig {
 //		jwtAuthenticationConverter.
        jwtAuthenticationConverter.setJwtGrantedAuthoritiesConverter(new KeycloakRoleConverter()); // delegate to custom converter
 		
+       
+       //For all GET & POST requests to /application_user, allow them without authorization
 		http.authorizeRequests()
 		.requestMatchers("/application_user/**").permitAll()
 		.requestMatchers(HttpMethod.POST, "/**").permitAll().and().httpBasic().and().csrf().disable();
@@ -131,15 +133,23 @@ public class WebSecurityConfig {
 //		.requestMatchers(HttpMethod.GET, "/enrolled/get/all").authenticated();
 
 		
+		//For all GET requests to /user_follow, allow them only if have authorization
+//		http.authorizeRequests()
+//		.requestMatchers("user_follow/**").authenticated();
+		
 		http.authorizeRequests()
-		.requestMatchers("user_follow/**").authenticated();
+		.requestMatchers("user_follow/**").permitAll();
 		
 		
+		
+		//For other routes, only allow if have proper authorization and roles
 		http.authorizeRequests()
 		.anyRequest()
 				.authenticated().and().oauth2ResourceServer().jwt()
 	.jwtAuthenticationConverter(jwtAuthenticationConverter);
 		
+		
+		//DOCUMENTATION:
 		//When testing security configuration by sending requests through POSTMAN/curl for POST requests
 		//even if using .permitAll(), need to add .and().httpBasic().and().csrf().disable();
 		//for it to work where the same is not needed for GET requests.
