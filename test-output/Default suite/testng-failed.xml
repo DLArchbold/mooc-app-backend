@@ -6,8 +6,8 @@
       <class name="com.in28minutes.rest.webservices.StaticLoginTest">
         <methods>
           <include name="f"/>
-          <include name="beforeTest"/>
           <include name="afterTest"/>
+          <include name="beforeTest"/>
         </methods>
       </class> <!-- com.in28minutes.rest.webservices.StaticLoginTest -->
     </classes>
