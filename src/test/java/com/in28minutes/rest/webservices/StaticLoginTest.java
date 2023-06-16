@@ -89,17 +89,19 @@ public class StaticLoginTest extends AbstractChromeWebDriverTest {
 				
 				sleep(5);
 
-				System.out.println("Closing the new window...");
+//				System.out.println("Closing the new window...");
 //				driver.close();
 			}
 
 		}
 
-//		driver.switchTo().window(parentWindowHandle);
-//		WebElement welcomeMessage = driver.findElement(By.id("welcome-message"));
-//		System.out.println("welcomeMessage:" + welcomeMessage);
-//		
-		sleep(5);
+		driver.switchTo().window(parentWindowHandle);
+		WebElement welcomeMessage = driver.findElement(By.id("welcome-message"));
+		System.out.println("welcomeMessage.getText():" + welcomeMessage.getText()); //welcomeMessage:[[ChromeDriver: chrome on WINDOWS (9c9774a520781adb9f870d34d047f6a0)] -> id: welcome-message]
+		
+		//Write simple login test to ensure login welcome message is as intended
+		assertEquals("Welcome student1@gmail.com. View all instructor comments here.", welcomeMessage.getText());
+		sleep(30);
 //		
 //		assertEquals("Mooc app", driver.getTitle());
 

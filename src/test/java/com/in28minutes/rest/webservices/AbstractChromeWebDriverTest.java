@@ -29,7 +29,7 @@ public abstract class AbstractChromeWebDriverTest extends AbstractTestNGSpringCo
 	@AfterTest
 	public void afterTest() {
 		
-//		driver.quit();
+		driver.quit();
 	}
 
 	public void sleep(int seconds) {
