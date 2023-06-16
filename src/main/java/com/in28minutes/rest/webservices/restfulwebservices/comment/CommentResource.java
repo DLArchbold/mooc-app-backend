@@ -21,7 +21,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 
 @RestController
-@CrossOrigin
+//@CrossOrigin
 public class CommentResource     {
 
 	@Autowired 

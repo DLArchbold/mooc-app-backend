@@ -21,7 +21,7 @@ import com.in28minutes.rest.webservices.restfulwebservices.course.Course;
 import com.in28minutes.rest.webservices.restfulwebservices.course.CourseRepository;
 
 @RestController
-@CrossOrigin
+//@CrossOrigin
 public class EnrolledResource {
 
 	@Autowired

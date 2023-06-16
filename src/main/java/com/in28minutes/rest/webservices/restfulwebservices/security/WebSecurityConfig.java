@@ -138,7 +138,7 @@ public class WebSecurityConfig {
 //		.requestMatchers("user_follow/**").authenticated();
 		
 		http.authorizeRequests()
-		.requestMatchers("user_follow/**").permitAll();
+		.requestMatchers("/user_follow/**").permitAll();
 		
 		
 		
@@ -147,6 +147,8 @@ public class WebSecurityConfig {
 		.anyRequest()
 				.authenticated().and().oauth2ResourceServer().jwt()
 	.jwtAuthenticationConverter(jwtAuthenticationConverter);
+		
+
 		
 		
 		//DOCUMENTATION:
@@ -164,16 +166,16 @@ public class WebSecurityConfig {
 		return http.build();
    }
 
-   @Bean
-   public WebMvcConfigurer corsConfigurer() {
-       return new WebMvcConfigurer() {
-           @Override
-           public void addCorsMappings(CorsRegistry registry) {
-               registry.addMapping("/**")
-                       .allowedMethods("*");
-           }
-       };
-   }
+//   @Bean
+//   public WebMvcConfigurer corsConfigurer() {
+//       return new WebMvcConfigurer() {
+//           @Override
+//           public void addCorsMappings(CorsRegistry registry) {
+//               registry.addMapping("/**")
+//                       .allowedMethods("*");
+//           }
+//       };
+//   }
 }
 
 

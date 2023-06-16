@@ -3,12 +3,13 @@ package com.in28minutes.rest.webservices;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.springframework.test.context.testng.AbstractTestNGSpringContextTests;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 
-public abstract class AbstractChromeWebDriverTest {
+public abstract class AbstractChromeWebDriverTest extends AbstractTestNGSpringContextTests{
 
 	protected WebDriver driver;
 
@@ -27,7 +28,8 @@ public abstract class AbstractChromeWebDriverTest {
 
 	@AfterTest
 	public void afterTest() {
-		driver.quit();
+		
+//		driver.quit();
 	}
 
 	public void sleep(int seconds) {

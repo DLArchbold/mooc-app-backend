@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.in28minutes.rest.webservices.restfulwebservices.ApiError;
 
 @RestController
-@CrossOrigin
+//@CrossOrigin
 public class UserFollowResource {
 
 	@Autowired

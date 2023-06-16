@@ -2,20 +2,24 @@
 <testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2023-06-14T22:56:38Z" name="Default suite" finished-at="2023-06-14T22:56:48Z" duration-ms="9952">
+  <suite started-at="2023-06-16T00:42:58Z" name="Default suite" finished-at="2023-06-16T00:44:26Z" duration-ms="88498">
     <groups>
     </groups>
-    <test started-at="2023-06-14T22:56:38Z" name="Default test" finished-at="2023-06-14T22:56:48Z" duration-ms="9952">
+    <test started-at="2023-06-16T00:42:58Z" name="Default test" finished-at="2023-06-16T00:44:26Z" duration-ms="88498">
       <class name="com.in28minutes.rest.webservices.StaticLoginTest">
-        <test-method is-config="true" signature="springTestContextBeforeTestClass()[pri:0, instance:com.in28minutes.rest.webservices.StaticLoginTest@3d6a6bee]" started-at="2023-06-14T22:56:38Z" name="springTestContextBeforeTestClass" finished-at="2023-06-14T22:56:38Z" duration-ms="12" status="PASS">
+        <test-method is-config="true" signature="beforeTest()[pri:0, instance:com.in28minutes.rest.webservices.StaticLoginTest@4bbb49b0]" started-at="2023-06-16T00:42:58Z" name="beforeTest" finished-at="2023-06-16T00:43:00Z" duration-ms="2354" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- beforeTest -->
+        <test-method is-config="true" signature="springTestContextBeforeTestClass()[pri:0, instance:com.in28minutes.rest.webservices.StaticLoginTest@4bbb49b0]" started-at="2023-06-16T00:43:00Z" name="springTestContextBeforeTestClass" finished-at="2023-06-16T00:43:00Z" duration-ms="3" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- springTestContextBeforeTestClass -->
-        <test-method is-config="true" signature="springTestContextPrepareTestInstance()[pri:0, instance:com.in28minutes.rest.webservices.StaticLoginTest@3d6a6bee]" started-at="2023-06-14T22:56:38Z" name="springTestContextPrepareTestInstance" finished-at="2023-06-14T22:56:47Z" depends-on-methods="org.springframework.test.context.testng.AbstractTestNGSpringContextTests.springTestContextBeforeTestClass" duration-ms="9464" status="PASS">
+        <test-method is-config="true" signature="springTestContextPrepareTestInstance()[pri:0, instance:com.in28minutes.rest.webservices.StaticLoginTest@4bbb49b0]" started-at="2023-06-16T00:43:00Z" name="springTestContextPrepareTestInstance" finished-at="2023-06-16T00:43:10Z" depends-on-methods="org.springframework.test.context.testng.AbstractTestNGSpringContextTests.springTestContextBeforeTestClass" duration-ms="9660" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- springTestContextPrepareTestInstance -->
-        <test-method is-config="true" signature="springTestContextBeforeTestMethod(java.lang.reflect.Method)[pri:0, instance:com.in28minutes.rest.webservices.StaticLoginTest@3d6a6bee]" started-at="2023-06-14T22:56:47Z" name="springTestContextBeforeTestMethod" finished-at="2023-06-14T22:56:48Z" duration-ms="188" status="PASS">
+        <test-method is-config="true" signature="springTestContextBeforeTestMethod(java.lang.reflect.Method)[pri:0, instance:com.in28minutes.rest.webservices.StaticLoginTest@4bbb49b0]" started-at="2023-06-16T00:43:10Z" name="springTestContextBeforeTestMethod" finished-at="2023-06-16T00:43:10Z" duration-ms="213" status="PASS">
           <params>
             <param index="0">
               <value>
@@ -26,11 +30,11 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- springTestContextBeforeTestMethod -->
-        <test-method signature="f()[pri:0, instance:com.in28minutes.rest.webservices.StaticLoginTest@3d6a6bee]" started-at="2023-06-14T22:56:48Z" name="f" finished-at="2023-06-14T22:56:48Z" duration-ms="258" status="PASS">
+        <test-method signature="f()[pri:0, instance:com.in28minutes.rest.webservices.StaticLoginTest@4bbb49b0]" started-at="2023-06-16T00:43:10Z" name="f" finished-at="2023-06-16T00:44:26Z" duration-ms="76238" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- f -->
-        <test-method is-config="true" signature="springTestContextAfterTestMethod(java.lang.reflect.Method)[pri:0, instance:com.in28minutes.rest.webservices.StaticLoginTest@3d6a6bee]" started-at="2023-06-14T22:56:48Z" name="springTestContextAfterTestMethod" finished-at="2023-06-14T22:56:48Z" duration-ms="4" status="PASS">
+        <test-method is-config="true" signature="springTestContextAfterTestMethod(java.lang.reflect.Method)[pri:0, instance:com.in28minutes.rest.webservices.StaticLoginTest@4bbb49b0]" started-at="2023-06-16T00:44:26Z" name="springTestContextAfterTestMethod" finished-at="2023-06-16T00:44:26Z" duration-ms="4" status="PASS">
           <params>
             <param index="0">
               <value>
@@ -41,10 +45,14 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- springTestContextAfterTestMethod -->
-        <test-method is-config="true" signature="springTestContextAfterTestClass()[pri:0, instance:com.in28minutes.rest.webservices.StaticLoginTest@3d6a6bee]" started-at="2023-06-14T22:56:48Z" name="springTestContextAfterTestClass" finished-at="2023-06-14T22:56:48Z" duration-ms="1" status="PASS">
+        <test-method is-config="true" signature="springTestContextAfterTestClass()[pri:0, instance:com.in28minutes.rest.webservices.StaticLoginTest@4bbb49b0]" started-at="2023-06-16T00:44:26Z" name="springTestContextAfterTestClass" finished-at="2023-06-16T00:44:26Z" duration-ms="1" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- springTestContextAfterTestClass -->
+        <test-method is-config="true" signature="afterTest()[pri:0, instance:com.in28minutes.rest.webservices.StaticLoginTest@4bbb49b0]" started-at="2023-06-16T00:44:26Z" name="afterTest" finished-at="2023-06-16T00:44:26Z" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- afterTest -->
       </class> <!-- com.in28minutes.rest.webservices.StaticLoginTest -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->

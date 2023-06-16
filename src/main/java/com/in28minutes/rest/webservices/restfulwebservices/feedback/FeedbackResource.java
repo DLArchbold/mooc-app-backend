@@ -25,7 +25,7 @@ import com.in28minutes.rest.webservices.restfulwebservices.lesson.Lesson;
 import com.in28minutes.rest.webservices.restfulwebservices.lesson.LessonRepository;
 
 @RestController
-@CrossOrigin
+//@CrossOrigin
 public class FeedbackResource {
 
 	@Autowired
