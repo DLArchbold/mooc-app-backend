@@ -23,6 +23,7 @@ public abstract class AbstractChromeWebDriverTest extends AbstractTestNGSpringCo
 
 		ChromeOptions options = new ChromeOptions();
 		options.addArguments("--remote-allow-origins=*");
+		options.addArguments("--headless");
 		driver = new ChromeDriver(options);
 	}
 
